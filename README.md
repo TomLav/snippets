@@ -11,3 +11,4 @@ Snippets from my research in geo-sciences (satellite, etc...), often in python.
 
 ## Miscellaneous
 1. [code to reprocude my time diagram of passive microwave satellites](https://github.com/TomLav/snippets/blob/main/CDR%20Satellite%20Diagram%20Public.ipynb).
+2. [code to plot the time abstracts are received up-until the deadline](https://github.com/TomLav/snippets/blob/main/Plot%20Abstracts%20Submission.ipynb).
