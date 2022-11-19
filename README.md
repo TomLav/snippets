@@ -5,6 +5,7 @@ Snippets from my research in geo-sciences (satellite, etc...), often in python.
 1. [how to compute 2D block averages of numpy arrays](https://github.com/TomLav/snippets/blob/main/Block%20Average%20of%202D%20arrays.ipynb).
 2. [how to add Antarctic ice sheets and shelves on a cartopy map](https://github.com/TomLav/snippets/blob/main/Cartopy%20Ice%20Sheet%20and%20Shelves.ipynb).
 3. [read a sea-ice concentration file from the OSI SAF / CCI CDRs (over OpenDap)](https://github.com/TomLav/snippets/blob/main/Read%20OSISAF%20CCI%20Sea%20Ice%20Concentration%20CDR.ipynb).
+4. [plot the OSI SAF Sea Ice Index as a spiral](https://github.com/TomLav/snippets/blob/main/Sea%20Ice%20Spiral%20with%20EUMETSAT%20OSI%20SAF%20data.ipynb)
 
 ## Science
 1. [investigate linear fits when both X and Y have uncertainties](https://github.com/TomLav/snippets/blob/main/Linear%20Fit%20when%20both%20X%20and%20Y%20have%20Uncertainties.ipynb).
