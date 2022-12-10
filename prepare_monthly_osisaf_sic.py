@@ -5,10 +5,10 @@
 import papermill as pm
 from datetime import date
 
-def run_notebook(area, dt):
+def run_notebook(area, dt, outdir):
     notebook = 'Prepare Monthly OSISAF SIC.ipynb'
     notebook_out = notebook.replace('.ipynb','_out.ipynb')
-    notebook_par = {'area': area, 'dt': dt}
+    notebook_par = {'area': area, 'dt': dt, 'outdir': outdir}
     _ = pm.execute_notebook(notebook,notebook_out,parameters=notebook_par)
 
 if __name__ == '__main__':
@@ -19,8 +19,9 @@ if __name__ == '__main__':
                                      description='Prepare monthly product files for the OSI SAF SIC CDR v3 (OSI-450-a,OSI-430-a)')
     parser.add_argument('AREA', choices=('nh','sh'), help='Hemisphere for which to compute the monthly SIC product')
     parser.add_argument('DATETIME', help='Datestring (YYYYMM or YYYYMMDD) for any day in the month for which to compute the monthly SIC product')
+    parser.add_argument('-o', help='Directory where to write the monthly SIC file', default='.')
     args = parser.parse_args()
 
     # run the monthly average via the notebook
-    run_notebook(args.AREA, args.DATETIME)
+    run_notebook(args.AREA, args.DATETIME, args.o)
 
