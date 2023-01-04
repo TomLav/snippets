@@ -6,11 +6,14 @@ import sys
 import papermill as pm
 from datetime import date
 
-def run_notebook(area, dt, outdir):
+def run_notebook(area, dt, outdir, indirs=None):
     notebook = 'Prepare Monthly OSISAF SIC.ipynb'
     notebook_out = notebook.replace('.ipynb','_out.ipynb')
-    notebook_par = {'area': area, 'dt': dt, 'outdir': outdir}
+    notebook_par = {'area': area, 'dt': dt, 'outdir': outdir,}
+    if indirs is not None:
+        notebook_par['indirs'] = indirs
     _ = pm.execute_notebook(notebook,notebook_out,parameters=notebook_par)
+
 
 if __name__ == '__main__':
     import argparse
@@ -21,11 +24,12 @@ if __name__ == '__main__':
     parser.add_argument('AREA', choices=('nh','sh'), help='Hemisphere for which to compute the monthly SIC product')
     parser.add_argument('DATETIME', help='Datestring (YYYYMM or YYYYMMDD) for any day in the month for which to compute the monthly SIC product')
     parser.add_argument('-o', help='Directory where to write the monthly SIC file', default='.')
+    parser.add_argument('-i', help='JSON file with paths to the input directories where to fine daily SIC files.', default=None)
     args = parser.parse_args()
 
     # run the monthly average via the notebook
     try:
-        run_notebook(args.AREA, args.DATETIME, args.o)
+        run_notebook(args.AREA, args.DATETIME, args.o, args.i)
     except pm.exceptions.PapermillExecutionError as pme:
         print(pme)
         sys.exit("Failed with Papermill Execution Error")
