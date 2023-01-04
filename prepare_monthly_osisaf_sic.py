@@ -2,6 +2,7 @@
    Python script to run monthly average SIC notebook from the command-line, using papermill
 """
 
+import sys
 import papermill as pm
 from datetime import date
 
@@ -23,5 +24,12 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # run the monthly average via the notebook
-    run_notebook(args.AREA, args.DATETIME, args.o)
+    try:
+        run_notebook(args.AREA, args.DATETIME, args.o)
+    except pm.exceptions.PapermillExecutionError as pme:
+        print(pme)
+        sys.exit("Failed with Papermill Execution Error")
+    except Exception as ex:
+        print(ex)
+        sys.exit("Failed with general exception.")
 
